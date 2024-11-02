@@ -164,18 +164,21 @@ void checkHighlight(){
     highlight_spider = checkHighlightHelper();
   }
 }
-Spider checkHighlightHelper(){
+Spider checkHighlightHelper() {
   Spider answer = null;
   float recordLowest = 1;
-  for(int s = 0; s < spiders.size(); s++){
-    float score = spiders.get(s).cursorOnSpider();
-    if(score > 0 && score < recordLowest){
-      recordLowest = score;
-      answer = spiders.get(s);
+  if (mousePressed) {
+    for (int s = 0; s < spiders.size(); s++) {
+      float score = spiders.get(s).cursorOnSpider();
+      if (score > 0 && score < recordLowest) {
+        recordLowest = score;
+        answer = spiders.get(s);
+      }
     }
   }
   return answer;
 }
+
 void drawUI(){
   noStroke();
   fill(0);
